@@ -1,0 +1,41 @@
+{
+  "name": "webRequest test",
+  "version": "1.0",
+  "manifest_version": 2,
+
+  // 简单描述
+  "description": "wo yao chi zhaji",
+  "icons": {
+    "16": "image/icon16.png"
+  },
+
+  // 浏览器小图表部分
+  "browser_action": {
+    "default_title": "webRequest",
+    "default_icon": "image/icon16.png",
+    "default_popup": "html/test.html"
+  },
+
+  "background" : {
+    "page": "html/background.html"
+  },
+
+  // 引入一个脚本
+  "content_scripts": [
+    {
+      "js": ["script/content_script.js"],
+      // 在什么情况下使用该脚本
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      // 什么情况下运行【文档加载开始】
+      "run_at": "document_start"
+    }
+  ],
+  // 应用协议页面
+  "permissions": [
+     "tabs","webRequest", "webRequestBlocking",
+    "*://*/*"
+  ]
+}
