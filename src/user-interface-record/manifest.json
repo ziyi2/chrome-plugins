@@ -1,0 +1,39 @@
+{
+  "name": "user-interface-record",
+  "version": "1.0",
+  "manifest_version": 2,
+
+  // 简单描述
+  "description": "watch user interface",
+  "icons": {
+    "16": "image/icon16.png"
+  },
+
+  // 浏览器小图表部分
+  "browser_action": {
+    "default_title": "user-interface-record",
+    "default_icon": "image/icon16.png",
+    "default_popup": "html/record.html"
+  },
+
+  "background" : {
+    "page": "html/background.html"
+  },
+
+  // 引入一个脚本
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": ["script/jquery.min.js", "script/content_script.js"]
+      // 在什么情况下使用该脚本
+    }
+  ],
+  // 应用协议页面
+  "permissions": [
+    "tabs","webRequest", "webRequestBlocking",
+    "*://*/*"
+  ]
+}
